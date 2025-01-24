@@ -9,7 +9,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
  * MainTeleOp class for controlling the robot during teleoperated mode.
  * This class extends LinearOpMode and uses a Robot object for hardware control.
  */
-@TeleOp(name="Basic: Omni Linear OpMode", group="Linear OpMode")
+@TeleOp(name="Main TeleOp", group="Linear OpMode")
 public class MainTeleOp extends LinearOpMode {
 
     // Variables for movement input
