@@ -121,6 +121,7 @@ public class Robot {
 
         slide.setPower(0);
         intakeArm.setPower(0);
+        imu.resetYaw();
     }
 
     public void proportionalControlMotor(DcMotor motor, int targetPosition) {

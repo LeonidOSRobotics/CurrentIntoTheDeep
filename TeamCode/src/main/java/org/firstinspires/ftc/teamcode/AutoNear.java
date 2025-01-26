@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="Near Net", group="Autonomous")
+@Autonomous(name="Near Net", group="Autonomous", preselectTeleOp="Main TeleOp")
 public class AutoNear extends LinearOpMode {
     AutoBot bot = new AutoBot();
     @Override
