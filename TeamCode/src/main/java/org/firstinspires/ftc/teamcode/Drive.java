@@ -5,11 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 /**
- * MainTeleOp class for controlling the robot during teleoperated mode.
+ * Class for driving the Robot the robot during demos and tests.
  * This class extends LinearOpMode and uses a Robot object for hardware control.
  */
-@TeleOp(name="Main TeleOp", group="Linear OpMode")
-public class MainTeleOp extends LinearOpMode {
+@TeleOp(name="Demo: Driving Only", group="Linear OpMode")
+public class Drive extends LinearOpMode {
 
     // Variables for movement input
     float forward = 0; // Stores the forward/backward input from the gamepad
@@ -19,11 +19,6 @@ public class MainTeleOp extends LinearOpMode {
 
     // Create an instance of the Robot class for hardware control
     Robot robot = new Robot();  // Using Robot.Java class to interface with the robot's hardware
-
-
-    //SLide Positions in cm
-
-    RobotState robotState = RobotState.BASE;
 
     @Override
     public void runOpMode() {
@@ -35,7 +30,6 @@ public class MainTeleOp extends LinearOpMode {
 
         // Main control loop that runs while the OpMode is active
         while (opModeIsActive()) {
-/*
             // Reset the robot's yaw (orientation angle) if the "options" button is pressed
             // This functionality allows recalibration of the IMU during operation to correct orientation errors
 
@@ -61,64 +55,10 @@ public class MainTeleOp extends LinearOpMode {
             // Pass the adjusted movement values and turn inputs to the robot's drivetrain
             // The drive method in the Robot class handles motor power distribution for movement
             robot.drive(rotForward, rotStrafe, turnRight, turnLeft);
-*/
 
-            if (robotState == RobotState.BASE && gamepad2.dpad_up) {
-                robotState = RobotState.SMPL_SETUP;
-            } else if (robotState == RobotState.BASE && gamepad2.dpad_down) {
-                robotState = RobotState.PRE_PICKUP_SMPL;
-            } else if (robotState == RobotState.BASE && gamepad2.y) {
-                robotState = RobotState.HIGH_SPMN_SETUP;
-            } else if (robotState == RobotState.BASE && gamepad2.x) {
-                robotState = RobotState.LOW_SPMN_SETUP;
-            } else if (robotState == RobotState.BASE && gamepad2.a) {
-                robotState = RobotState.SPMN_SCORE;
-            } else if (robotState == RobotState.HIGH_SPMN_SETUP || robotState == RobotState.LOW_SPMN_SETUP) {
-                if (gamepad2.right_bumper) {
-                    robotState = RobotState.SPMN_SCORE;
-                } else if (gamepad2.left_bumper) {
-                    robotState = RobotState.BASE;
-                } else if (robotState == RobotState.SPMN_SCORE){
-                    if (gamepad2.right_bumper) {
-                        robotState = RobotState.SPMN_COLLECT;
-                    } else if (gamepad2.left_bumper) {
-                        robotState = RobotState.BASE;
-                    } else if (robotState == RobotState.PRE_PICKUP_SMPL){
-                        if (gamepad2.right_bumper) {
-                            robotState = RobotState.PICKUP_SMPL;
-                        } else if (gamepad2.left_bumper) {
-                            robotState = RobotState.BASE;
-                        } else if (robotState == RobotState.SMPL_SETUP) {
-                            if (gamepad2.right_bumper) {
-                                robotState = RobotState.SMPL_SCORE;
-                            } else if (gamepad2.left_bumper) {
-                                robotState = RobotState.BASE;
-                            }
-                        }
-                    }
-                }
-            }
-            telemetry.addData("State", robotState.getName());
+            telemetry.addData("Robot's Angle:", botHeading);
             telemetry.update();
-/*
-            if (gamepad1.x) {
-                robot.bucket.setPosition(RobotState.SMPL_SCORE.getBucketPosition()); // Rotate bucket to a specific position when button X is pressed
-            } else {
-                robot.bucket.setPosition(RobotState.BASE.getBucketPosition()); // Default position
-            }
 
-            //  Linear slide Overide
-                if (gamepad1.b) {
-                    robot.slide.setPower(.3);
-                } else if (gamepad1.a) {
-                    robot.slide.setPower(-0.75);
-                } else {
-                    robot.slide.setPower(0);
-                }*/
         }
-
     }
-
-
 }
-
