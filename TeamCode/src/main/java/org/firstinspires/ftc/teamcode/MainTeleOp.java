@@ -62,7 +62,7 @@ public class MainTeleOp extends LinearOpMode {
             // The drive method in the Robot class handles motor power distribution for movement
             robot.drive(rotForward, rotStrafe, turnRight, turnLeft);
 */
-
+            //Currently missing SPMN grab and collect
             if (robotState == RobotState.BASE && gamepad2.dpad_up) {
                 robotState = RobotState.SMPL_SETUP;
             } else if (robotState == RobotState.BASE && gamepad2.dpad_down) {
@@ -71,33 +71,41 @@ public class MainTeleOp extends LinearOpMode {
                 robotState = RobotState.HIGH_SPMN_SETUP;
             } else if (robotState == RobotState.BASE && gamepad2.x) {
                 robotState = RobotState.LOW_SPMN_SETUP;
-            } else if (robotState == RobotState.BASE && gamepad2.a) {
-                robotState = RobotState.SPMN_SCORE;
-            } else if (robotState == RobotState.HIGH_SPMN_SETUP || robotState == RobotState.LOW_SPMN_SETUP) {
+            } else if (robotState == RobotState.HIGH_SPMN_SETUP) {
                 if (gamepad2.right_bumper) {
-                    robotState = RobotState.SPMN_SCORE;
+                    robotState = RobotState.HIGH_SPMN_SCORE;
                 } else if (gamepad2.left_bumper) {
-                    robotState = RobotState.BASE;
-                } else if (robotState == RobotState.SPMN_SCORE){
+                    robotState = RobotState.BASE;}
+            } else if (robotState == RobotState.HIGH_SPMN_SCORE){
                     if (gamepad2.right_bumper) {
-                        robotState = RobotState.SPMN_COLLECT;
-                    } else if (gamepad2.left_bumper) {
                         robotState = RobotState.BASE;
-                    } else if (robotState == RobotState.PRE_PICKUP_SMPL){
+                    } else if (gamepad2.left_bumper) {
+                        robotState = RobotState.HIGH_SPMN_SETUP;}
+            } else if (robotState == RobotState.LOW_SPMN_SETUP) {
+                if (gamepad2.right_bumper) {
+                    robotState = RobotState.LOW_SPMN_SCORE;
+                } else if (gamepad2.left_bumper) {
+                    robotState = RobotState.BASE;}
+            } else if (robotState == RobotState.LOW_SPMN_SCORE) {
+                if (gamepad2.right_bumper) {
+                    robotState = RobotState.BASE;
+                } else if (gamepad2.left_bumper) {
+                    robotState = RobotState.LOW_SPMN_SETUP;}
+            } else if (robotState == RobotState.PRE_PICKUP_SMPL){
+                    if (gamepad2.right_bumper) {
+                        robotState = RobotState.PICKUP_SMPL;
+                    } else if (gamepad2.left_bumper) {
+                        robotState = RobotState.BASE;}
+            } else if (robotState == RobotState.SMPL_SETUP) {
                         if (gamepad2.right_bumper) {
-                            robotState = RobotState.PICKUP_SMPL;
+                            robotState = RobotState.SMPL_SCORE;
                         } else if (gamepad2.left_bumper) {
                             robotState = RobotState.BASE;
-                        } else if (robotState == RobotState.SMPL_SETUP) {
-                            if (gamepad2.right_bumper) {
-                                robotState = RobotState.SMPL_SCORE;
-                            } else if (gamepad2.left_bumper) {
-                                robotState = RobotState.BASE;
-                            }
                         }
                     }
-                }
+
             }
+
             telemetry.addData("State", robotState.getName());
             telemetry.update();
 /*
