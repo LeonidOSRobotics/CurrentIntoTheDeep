@@ -2,9 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-@Autonomous(name="AutoFar" , group="Autonomous")
+@Autonomous(name="Far From Net" , group="Autonomous")
 public class AutoFar extends LinearOpMode {
-    Robot bot = new Robot();
+    AutoBot bot = new AutoBot();
     @Override
     public void runOpMode() {
 

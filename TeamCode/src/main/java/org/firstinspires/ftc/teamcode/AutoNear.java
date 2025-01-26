@@ -3,9 +3,9 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="AutoNear", group="Autonomous")
+@Autonomous(name="Near Net", group="Autonomous")
 public class AutoNear extends LinearOpMode {
-    Robot bot = new Robot();
+    AutoBot bot = new AutoBot();
     @Override
     public void runOpMode() {
 
