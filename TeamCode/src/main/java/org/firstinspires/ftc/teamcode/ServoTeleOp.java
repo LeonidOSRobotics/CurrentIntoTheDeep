@@ -6,14 +6,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
-@TeleOp(name="TeleOp" , group="Linear OpMode")
-
+//This code is to mount the Friction based grabber onto the pusher circle.
+//The numbers and comment might have to be adjusted after testing
+@TeleOp(name="Install/Remove Friction Grabber" , group="Linear OpMode")
 public class ServoTeleOp extends LinearOpMode {
-    float forward = 0;
-    float strafe = 0;
-    float turnRight = 0;
-    float turnLeft = 0;
-
 
     Robot robot = new Robot();  //Using Robot.Java class
     //TODO: make robot.java
@@ -21,30 +17,22 @@ public class ServoTeleOp extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot.init(hardwareMap);
-
         waitForStart();
 
         while (opModeIsActive()) {
 
-
-
-            // This button choice was made so that it is hard to hit on accident,
-            // it can be freely changed based on preference.
-            // The equivalent button is start on Xbox-style controllers.
-            if (gamepad1.options) {
-                robot.imu.resetYaw();
-            }
-            if (gamepad1.a) {
+            if (gamepad1.x) { //Pre-Mount
                 robot.backward_s.setPosition(Servo.MAX_POSITION);
                 robot.forward_s.setPosition(Servo.MAX_POSITION);
             }
-            if (gamepad1.b) {
+            else if(gamepad1.b){
+                robot.backward_s.setPosition(Servo.MAX_POSITION-0.2);
+                robot.forward_s.setPosition(Servo.MAX_POSITION-0.2);
+            }
+            else if (gamepad1.a) {//Push Block
                 robot.backward_s.setPosition(Servo.MIN_POSITION);
                 robot.forward_s.setPosition(Servo.MIN_POSITION);
             }
-
         }
     }
-
-
 }
