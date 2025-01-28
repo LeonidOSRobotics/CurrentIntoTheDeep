@@ -109,10 +109,11 @@ public class MainTeleOp extends LinearOpMode {
                 }
             }
 
+            telemetry.addData("State", robotState.getName());
+            telemetry.update();
         }
 
-        telemetry.addData("State", robotState.getName());
-        telemetry.update();
+
 /*
             if (gamepad1.x) {
                 robot.bucket.setPosition(RobotState.SMPL_SCORE.getBucketPosition()); // Rotate bucket to a specific position when button X is pressed
