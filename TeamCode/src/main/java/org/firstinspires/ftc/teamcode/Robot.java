@@ -16,15 +16,15 @@ public class Robot {
     DcMotor leftBack = null;
     DcMotor rightBack = null;
 
-    DcMotor slide = null;
+    DcMotor linearSlide = null;
     DcMotor intakeArm = null;
 
 
     Servo forward_s = null;
     Servo backward_s = null;
 
-    Servo bucket = null;
-    Servo intake = null;
+    Servo smplScoringBucket = null;
+    Servo frictionBasedGrabber = null;
 
     IMU imu = null;
 
@@ -55,14 +55,14 @@ public class Robot {
         leftBack = hwMap.get(DcMotor.class, "leftBack");
         rightBack = hwMap.get(DcMotor.class, "rightBack");
 
-        slide = hwMap.get(DcMotor.class, "slide");
+        linearSlide = hwMap.get(DcMotor.class, "slide");
         intakeArm = hwMap.get(DcMotor.class, "intakeArm");
 
         forward_s = hwMap.get(Servo.class, "forward_s");
         backward_s = hwMap.get(Servo.class, "backward_s");
 
-        bucket = hwMap.get(Servo.class, "bucket");
-        intake = hwMap.get(Servo.class, "intake");
+        smplScoringBucket = hwMap.get(Servo.class, "bucket");
+        frictionBasedGrabber = hwMap.get(Servo.class, "intake");
 
         imu = hwMap.get(IMU.class, "imu");
 
@@ -78,7 +78,7 @@ public class Robot {
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        linearSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         intakeArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         //Temporary Directions for drive train, change after testing if needed.
@@ -87,14 +87,14 @@ public class Robot {
         leftBack.setDirection(DcMotor.Direction.FORWARD);
         rightBack.setDirection(DcMotor.Direction.REVERSE);
 
-        slide.setDirection(DcMotor.Direction.FORWARD);
+        linearSlide.setDirection(DcMotor.Direction.FORWARD);
         intakeArm.setDirection(DcMotor.Direction.FORWARD);
 
         forward_s.setDirection(Servo.Direction.FORWARD);
         backward_s.setDirection(Servo.Direction.FORWARD);
 
-        bucket.setDirection(Servo.Direction.FORWARD);
-        intake.setDirection(Servo.Direction.FORWARD);
+        smplScoringBucket.setDirection(Servo.Direction.FORWARD);
+        frictionBasedGrabber.setDirection(Servo.Direction.FORWARD);
 
 
         leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -107,19 +107,19 @@ public class Robot {
         rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        slide.setDirection(DcMotor.Direction.FORWARD);
+        linearSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        linearSlide.setDirection(DcMotor.Direction.FORWARD);
 
         // Set up the slide motor for encoder-based control
-        slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        slide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        linearSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        linearSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        intake.setPosition(.8);
+        frictionBasedGrabber.setPosition(.8);
 
         // set all motors to zero power
         stopDriveTrain();
 
-        slide.setPower(0);
+        linearSlide.setPower(0);
         intakeArm.setPower(0);
         imu.resetYaw();
     }
