@@ -125,7 +125,7 @@ public class Robot {
     }
 
     public void proportionalControlMotor(DcMotor motor, int targetPosition) {
-        double error = targetPosition - motor.getCurrentPosition();
+        double error =motor.getCurrentPosition() -  targetPosition;
 
         // Calculate the proportional output
         double output = kP * error;
