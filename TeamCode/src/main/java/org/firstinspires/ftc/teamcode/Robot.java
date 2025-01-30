@@ -114,6 +114,9 @@ public class Robot {
         linearSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         linearSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        intakeArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        intakeArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         frictionBasedGrabber.setPosition(.8);
 
         // set all motors to zero power
@@ -125,7 +128,7 @@ public class Robot {
     }
 
     public void proportionalControlMotor(DcMotor motor, int targetPosition, double kP) {
-        double error =motor.getCurrentPosition() -  targetPosition;
+        double error =targetPosition-motor.getCurrentPosition();
 
         // Calculate the proportional output
         double output = kP * error;
