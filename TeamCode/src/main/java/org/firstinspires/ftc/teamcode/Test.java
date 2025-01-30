@@ -22,7 +22,7 @@ public class Test extends LinearOpMode {
              if (gamepad1.b){
                  target = 1000;
              }
-            robot.proportionalControlMotor(robot.intakeArm,1000);
+            robot.proportionalControlMotor(robot.intakeArm,1000, 0.01);
 
         }
     }

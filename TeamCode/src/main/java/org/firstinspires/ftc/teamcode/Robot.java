@@ -32,7 +32,7 @@ public class Robot {
     static final double PULLEY_CIRCUMFERENCE_CM = 14.2; // Circumference of the wheel in cm
     static final int NUMBER_OF_WHEELS = 3; // Three wheels in the system
 
-    private double kP = 0.01; // Proportional control constant
+   // private double kP = 0.01; // Proportional control constant (switched out for a constant in method
 
     /* local OpMode members.*/
     HardwareMap hwMap = null; //hardware map
@@ -124,7 +124,7 @@ public class Robot {
         imu.resetYaw();
     }
 
-    public void proportionalControlMotor(DcMotor motor, int targetPosition) {
+    public void proportionalControlMotor(DcMotor motor, int targetPosition, double kP) {
         double error =motor.getCurrentPosition() -  targetPosition;
 
         // Calculate the proportional output
