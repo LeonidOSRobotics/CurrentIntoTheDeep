@@ -65,6 +65,7 @@ public class MainTeleOp extends LinearOpMode {
             robot.drive(rotForward, rotStrafe, turnRight, turnLeft);
 */
             //Currently missing SPMN grab and collect
+            //State Machine
             if(buttonReleased) {
                 if (robotState == RobotState.BASE && gamepad2.dpad_up) {
                     robotState = RobotState.SMPL_SETUP;
@@ -122,8 +123,6 @@ public class MainTeleOp extends LinearOpMode {
                     } else if (gamepad2.left_bumper) {
                         robotState = RobotState.PRE_PICKUP_SMPL;
                     }
-
-
                 }
             }
             if(gamepad2.right_bumper || gamepad2.left_bumper){
@@ -131,10 +130,12 @@ public class MainTeleOp extends LinearOpMode {
             }else{
                 buttonReleased = true;
             }
-
-
             telemetry.addData("State", robotState.getName());
             telemetry.update();
+
+
+            
+
 
             if (gamepad1.b) {
                 robot.intakeArm.setPower(.4);
