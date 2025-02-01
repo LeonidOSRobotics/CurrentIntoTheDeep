@@ -68,8 +68,8 @@ public class Robot {
 
         // Retrieve the IMU from the hardware map
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
-                RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                RevHubOrientationOnRobot.UsbFacingDirection.RIGHT));
+                RevHubOrientationOnRobot.LogoFacingDirection.DOWN,
+                RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD));
         // Without this, the REV Hub's orientation is assumed to be logo up / USB forward
         imu.initialize(parameters);
 
@@ -88,7 +88,7 @@ public class Robot {
         rightBack.setDirection(DcMotor.Direction.REVERSE);
 
         linearSlide.setDirection(DcMotor.Direction.FORWARD);
-        intakeArm.setDirection(DcMotor.Direction.FORWARD);
+        intakeArm.setDirection(DcMotor.Direction.REVERSE);
 
         forward_s.setDirection(Servo.Direction.FORWARD);
         backward_s.setDirection(Servo.Direction.FORWARD);
