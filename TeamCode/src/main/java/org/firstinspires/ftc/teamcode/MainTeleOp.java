@@ -36,7 +36,7 @@ public class MainTeleOp extends LinearOpMode {
 
         // Main control loop that runs while the OpMode is active
         while (opModeIsActive()) {
-/*
+
             // Reset the robot's yaw (orientation angle) if the "options" button is pressed
             // This functionality allows recalibration of the IMU during operation to correct orientation errors
 
@@ -62,7 +62,7 @@ public class MainTeleOp extends LinearOpMode {
             // Pass the adjusted movement values and turn inputs to the robot's drivetrain
             // The drive method in the Robot class handles motor power distribution for movement
             robot.drive(rotForward, rotStrafe, turnRight, turnLeft);
-*/
+
             //Currently missing SPMN grab and collect
             //State Machine
             if (buttonReleased) {
@@ -158,7 +158,14 @@ public class MainTeleOp extends LinearOpMode {
                 robot.intakeArm.setPower(0);
             }
 
-
+            //  Linear slide Overide
+            if (gamepad1.dpad_up) {
+                robot.linearSlide.setPower(.8);
+            } else if (gamepad1.dpad_down) {
+                robot.linearSlide.setPower(-0.8);
+            } else {
+                robot.linearSlide.setPower(0);
+            }
 
 
 /*
@@ -168,14 +175,7 @@ public class MainTeleOp extends LinearOpMode {
                 robot.bucket.setPosition(RobotState.BASE.getBucketPosition()); // Default position
             }
 
-            //  Linear slide Overide
-                if (gamepad1.b) {
-                    robot.slide.setPower(.3);
-                } else if (gamepad1.a) {
-                    robot.slide.setPower(-0.75);
-                } else {
-                    robot.slide.setPower(0);
-                }*/
+*/
 
         }
     }

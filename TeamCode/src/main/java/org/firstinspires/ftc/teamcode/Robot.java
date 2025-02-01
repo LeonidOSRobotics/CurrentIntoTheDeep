@@ -87,7 +87,7 @@ public class Robot {
         leftBack.setDirection(DcMotor.Direction.FORWARD);
         rightBack.setDirection(DcMotor.Direction.REVERSE);
 
-        linearSlide.setDirection(DcMotor.Direction.FORWARD);
+        linearSlide.setDirection(DcMotor.Direction.REVERSE);
         intakeArm.setDirection(DcMotor.Direction.REVERSE);
 
         forward_s.setDirection(Servo.Direction.FORWARD);
