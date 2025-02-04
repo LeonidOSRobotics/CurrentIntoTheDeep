@@ -108,7 +108,7 @@ public class Robot {
         rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         linearSlide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        linearSlide.setDirection(DcMotor.Direction.FORWARD);
+        linearSlide.setDirection(DcMotor.Direction.REVERSE);
 
         // Set up the slide motor for encoder-based control
         linearSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -134,7 +134,12 @@ public class Robot {
         double output = kP * error;
 
         // Set motor power with proportional control
-        motor.setPower(output);
+        if (motor.getCurrentPosition() < targetPosition+5 && motor.getCurrentPosition() > targetPosition-5)
+        { motor.setPower(0);
+        }else{
+            motor.setPower(output);
+        }
+
     }
 
     public void drive(double forward, double strafe, double rotateLeft, double rotateRight) {

@@ -19,12 +19,21 @@ public class Test extends LinearOpMode {
         // Main control loop that runs while the OpMode is active
         while (opModeIsActive()) {
             // New setup allows for repeat calls of the function
-             if (gamepad1.b){
-                 target = 1000;
+            /* if (gamepad1.b){
+                 target = robot.getLinearSlideTicksPerCm(10);
              }
-            robot.proportionalControlMotor(robot.intakeArm,target, 0.01);
+            robot.proportionalControlMotor(robot.linearSlide,target, 0.01);
+*/
+            if (gamepad1.dpad_up) {
+                robot.linearSlide.setPower(.5);
+            } else if (gamepad1.dpad_down) {
+                robot.linearSlide.setPower(-0.5);
+            } else {
+                robot.linearSlide.setPower(0);
+            }
 
-            telemetry.addData("EncoderValue",robot.intakeArm.getCurrentPosition());
+
+            telemetry.addData("EncoderValue",robot.linearSlide.getCurrentPosition());
             telemetry.update();
 
         }

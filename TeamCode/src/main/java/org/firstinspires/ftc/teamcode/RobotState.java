@@ -3,24 +3,24 @@ package org.firstinspires.ftc.teamcode;
 public enum RobotState {
 
     BASE(1,0,0.3, "Base"),
-    SPNM_GRAB(1,-1,0.3, "SPNM_GRAB"),
-    SPMN_COLLECT(1,-1,0.3, "SPMN_COLLECT"),
-    HIGH_SPMN_SETUP(1,51,0.3,"HIGH_SPMN_SETUP"),
-    LOW_SPMN_SETUP(1,16,0.3,"LOW_SPMN_SETUP"),
-    LOW_SPMN_SCORE(1,-1,0.3,"SPMN_SCORE"),
-    HIGH_SPMN_SCORE(1,1,1,"SPMN_SCORE"),
+    SPNM_GRAB(1,459,0.3, "SPNM_GRAB"),
+    SPMN_COLLECT(1,1160,0.3, "SPMN_COLLECT"),
+    HIGH_SPMN_SETUP(1,2800,0.3,"HIGH_SPMN_SETUP"),
+    LOW_SPMN_SETUP(1,1100,0.3,"LOW_SPMN_SETUP"),
+    LOW_SPMN_SCORE(1,146,0.3,"SPMN_SCORE"),
+    HIGH_SPMN_SCORE(1,1854,1,"SPMN_SCORE"),
     PRE_PICKUP_SMPL(1,0,0.3,"PRE_PICKUP_SMPL"),
     PICKUP_SMPL(1,0,0.3,"PICKUP_SMPL"),
-    SMPL_SETUP(1,53,0.3,"SMPL_SETUP"),
-    SMPL_SCORE(1,53,0,"SMPL_SCORE");
+    SMPL_SETUP(1,2924,0.3,"SMPL_SETUP"),
+    SMPL_SCORE(1,2924,0,"SMPL_SCORE");
 
     private double armPosition;
-    private double slidePosition;
+    private int slidePosition;
     private double bucketPosition;
     private String name;
 
     //          Ticks,      cm from Base,  0-1
-    RobotState(double arm, double slide, double bucket, String name){
+    RobotState(double arm, int slide, double bucket, String name){
         armPosition = arm;
         slidePosition = slide;
         bucketPosition = bucket;
@@ -31,7 +31,7 @@ public enum RobotState {
         return armPosition;
     }
 
-    public double getSlidePosition() {
+    public int getSlidePosition() {
         return slidePosition;
     }
 
@@ -47,7 +47,7 @@ public enum RobotState {
         this.armPosition = armPosition;
     }
 
-    public void setSlidePosition(double slidePosition) {
+    public void setSlidePosition(int slidePosition) {
         this.slidePosition = slidePosition;
     }
 

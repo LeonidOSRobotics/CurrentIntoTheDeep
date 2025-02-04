@@ -147,8 +147,10 @@ public class MainTeleOp extends LinearOpMode {
                 buttonReleased = true;
             }
             telemetry.addData("State", robotState.getName());
+            telemetry.addData("Position", robotState.getSlidePosition());
             telemetry.update();
 
+            robot.proportionalControlMotor(robot.linearSlide,robotState.getSlidePosition(), 0.01);
 
             if (gamepad1.b) {
                 robot.intakeArm.setPower(.4);
@@ -157,7 +159,7 @@ public class MainTeleOp extends LinearOpMode {
             } else {
                 robot.intakeArm.setPower(0);
             }
-
+            /*
             //  Linear slide Overide
             if (gamepad1.dpad_up) {
                 robot.linearSlide.setPower(.8);
@@ -165,7 +167,7 @@ public class MainTeleOp extends LinearOpMode {
                 robot.linearSlide.setPower(-0.8);
             } else {
                 robot.linearSlide.setPower(0);
-            }
+            }*/
 
 
 /*
