@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 public enum RobotState {
 
     BASE(1,0,0.3, "Base"),
-    SPNM_GRAB(1,459,0.3, "SPNM_GRAB"),
+    SPNM_GRAB(1,459,0.25, "SPNM_GRAB"),
     SPMN_COLLECT(1,1160,0.3, "SPMN_COLLECT"),
     HIGH_SPMN_SETUP(1,2800,0.3,"HIGH_SPMN_SETUP"),
     LOW_SPMN_SETUP(1,1100,0.3,"LOW_SPMN_SETUP"),

@@ -151,7 +151,7 @@ public class MainTeleOp extends LinearOpMode {
             telemetry.update();
 
             robot.proportionalControlMotor(robot.linearSlide,robotState.getSlidePosition(), 0.01);
-
+            robot.smplScoringBucket.setPosition(robotState.getBucketPosition());
             if (gamepad1.b) {
                 robot.intakeArm.setPower(.4);
             } else if (gamepad1.a) {
