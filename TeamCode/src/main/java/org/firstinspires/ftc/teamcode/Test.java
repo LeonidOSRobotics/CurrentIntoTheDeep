@@ -32,8 +32,17 @@ public class Test extends LinearOpMode {
                 robot.linearSlide.setPower(0);
             }
 
+             if (gamepad1.b) {
+                robot.intakeArm.setPower(.4);
+            } else if (gamepad1.a) {
+                robot.intakeArm.setPower(-0.4);
+            } else {
+                robot.intakeArm.setPower(0);
+            }
+
 
             telemetry.addData("EncoderValue",robot.linearSlide.getCurrentPosition());
+            telemetry.addData("EncoderValue",robot.intakeArm.getCurrentPosition());
             telemetry.update();
 
         }

@@ -152,13 +152,14 @@ public class MainTeleOp extends LinearOpMode {
 
             robot.proportionalControlMotor(robot.linearSlide,robotState.getSlidePosition(), 0.01);
             robot.smplScoringBucket.setPosition(robotState.getBucketPosition());
-            if (gamepad1.b) {
+            robot.proportionalControlMotor(robot.intakeArm,robotState.getArmPosition(), 0.004);
+           /* if (gamepad1.b) {
                 robot.intakeArm.setPower(.4);
             } else if (gamepad1.a) {
                 robot.intakeArm.setPower(-0.4);
             } else {
                 robot.intakeArm.setPower(0);
-            }
+            }*/
             /*
             //  Linear slide Overide
             if (gamepad1.dpad_up) {
