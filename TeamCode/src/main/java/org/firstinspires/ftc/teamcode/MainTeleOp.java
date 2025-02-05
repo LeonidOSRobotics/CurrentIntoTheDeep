@@ -218,5 +218,7 @@ public class MainTeleOp extends LinearOpMode {
 */
 
         }
+        robot.proportionalControlMotor(robot.intakeArm, 0, 0.004);
     }
+
 }
