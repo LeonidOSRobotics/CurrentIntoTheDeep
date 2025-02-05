@@ -67,7 +67,7 @@ public class MainTeleOp extends LinearOpMode {
             //State Machine
             if (buttonReleased) {
                 if (robotState == RobotState.BASE && gamepad2.dpad_up) {
-                    robotState = RobotState.SMPL_SETUP;
+                    robotState = RobotState.SMPL_LOAD;
                 } else if (robotState == RobotState.BASE && gamepad2.dpad_down) {
                     robotState = RobotState.PRE_PICKUP_SMPL;
                 } else if (robotState == RobotState.BASE && gamepad2.y) {
@@ -119,11 +119,19 @@ public class MainTeleOp extends LinearOpMode {
                     } else if (gamepad2.left_bumper) {
                         robotState = RobotState.BASE;
                     }
+
+                } else if (robotState == RobotState.SMPL_LOAD) {
+                    if (gamepad2.right_bumper) {
+                        robotState = RobotState.SMPL_SETUP;
+                    } else if (gamepad2.left_bumper) {
+                        robotState = RobotState.BASE;
+                    }
+
                 } else if (robotState == RobotState.SMPL_SETUP) {
                     if (gamepad2.right_bumper) {
                         robotState = RobotState.SMPL_SCORE;
                     } else if (gamepad2.left_bumper) {
-                        robotState = RobotState.BASE;
+                        robotState = RobotState.SMPL_LOAD;
                     }
                 } else if (robotState == RobotState.SMPL_SCORE) {
                     if (gamepad2.right_bumper) {
