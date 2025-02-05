@@ -16,6 +16,7 @@ public class MainTeleOp extends LinearOpMode {
     float turnRight = 0; // Stores the right-turn input from the gamepad triggers
     float turnLeft = 0;  // Stores the left-turn input from the gamepad triggers
 
+    private boolean manualControl = false;
     boolean buttonReleased = true;
 
     // Create an instance of the Robot class for hardware control
@@ -150,9 +151,37 @@ public class MainTeleOp extends LinearOpMode {
             telemetry.addData("Position", robotState.getSlidePosition());
             telemetry.update();
 
-            robot.proportionalControlMotor(robot.linearSlide,robotState.getSlidePosition(), 0.01);
-            robot.smplScoringBucket.setPosition(robotState.getBucketPosition());
-            robot.proportionalControlMotor(robot.intakeArm,robotState.getArmPosition(), 0.004);
+
+            if (gamepad1.back) {
+                manualControl = !manualControl;
+            }
+
+            if (manualControl) {
+
+                if (gamepad1.dpad_up) {
+                    robot.linearSlide.setPower(.8);
+                } else if (gamepad1.dpad_down) {
+                    robot.linearSlide.setPower(-0.8);
+                } else {
+                    robot.linearSlide.setPower(0);
+                }
+
+                if (gamepad1.b) {
+                    robot.intakeArm.setPower(.4);
+                } else if (gamepad1.a) {
+                    robot.intakeArm.setPower(-0.4);
+                } else {
+                    robot.intakeArm.setPower(0);
+                }
+            } else {
+
+                robot.proportionalControlMotor(robot.linearSlide, robotState.getSlidePosition(), 0.01);
+                robot.smplScoringBucket.setPosition(robotState.getBucketPosition());
+                robot.proportionalControlMotor(robot.intakeArm, robotState.getArmPosition(), 0.004);
+            }
+
+
+
            /* if (gamepad1.b) {
                 robot.intakeArm.setPower(.4);
             } else if (gamepad1.a) {
