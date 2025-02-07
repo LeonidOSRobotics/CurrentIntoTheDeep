@@ -16,6 +16,10 @@ public class MainTeleOp extends LinearOpMode {
     float turnRight = 0; // Stores the right-turn input from the gamepad triggers
     float turnLeft = 0;  // Stores the left-turn input from the gamepad triggers
 
+    double grabberStartPosition = 0.3;
+    double grabberTargetPosition = grabberStartPosition + (20.0/180.0);
+    double grabberFullRotation = grabberStartPosition + (180.0/180.0);
+
     private boolean manualControl = false;
     boolean buttonReleased = true;
 
@@ -148,6 +152,15 @@ public class MainTeleOp extends LinearOpMode {
                     }
                 }
             }
+
+
+            if (gamepad1.x) {
+                robot.frictionBasedGrabber.setPosition(grabberTargetPosition);
+            } else if(gamepad1.y){
+                robot.frictionBasedGrabber.setPosition(grabberFullRotation);
+            }
+
+
 
 
             if (gamepad2.right_bumper || gamepad2.left_bumper) {
