@@ -12,6 +12,11 @@ public class AutoFar extends LinearOpMode {
 
         waitForStart();
 
+
+        bot.moveToPosition(1, 0.6);
+
+
+        /*
         sleep(5000);
         bot.drive(-1, 0, 0, 0);
         sleep(1800);
