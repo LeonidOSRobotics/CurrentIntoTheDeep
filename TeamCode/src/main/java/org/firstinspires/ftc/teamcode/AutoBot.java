@@ -8,27 +8,31 @@ public class AutoBot extends Robot {
     public AutoBot() {
     }
 
-    public void moveToPosition(int targetPosition, double power) {
+    public void moveToPosition(int targetPosition, double power, double timeoutS) {
         // Reset encoders after position movement
-        leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        rightBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        leftFront.setTargetPosition(targetPosition);
-        leftBack.setTargetPosition(targetPosition);
-        rightFront.setTargetPosition(targetPosition);
-        rightBack.setTargetPosition(targetPosition);
+        int newLeftFrontTarget = leftFront.getCurrentPosition()+targetPosition;
+        int newRightFrontTarget = rightFront.getCurrentPosition()+targetPosition;
+        int newLeftBackTarget = leftBack.getCurrentPosition()+targetPosition;
+        int newRightBackTarget = rightBack.getCurrentPosition()+targetPosition;
+
+
+        leftFront.setTargetPosition(newLeftFrontTarget);
+        leftBack.setTargetPosition(newRightFrontTarget);
+        rightFront.setTargetPosition(newLeftBackTarget);
+        rightBack.setTargetPosition(newRightBackTarget);
 
         leftFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightFront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightBack.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        leftFront.setPower(power);
-        leftBack.setPower(power);
-        rightFront.setPower(power);
-        rightBack.setPower(power);
+
+        super.period.reset();
+        leftFront.setPower(Math.abs(power));
+        leftBack.setPower(Math.abs(power));
+        rightFront.setPower(Math.abs(power));
+        rightBack.setPower(Math.abs(power));
 
         while (leftFront.isBusy() && leftBack.isBusy() && rightFront.isBusy() && rightBack.isBusy()) {
             // Wait until the motors reach the target position

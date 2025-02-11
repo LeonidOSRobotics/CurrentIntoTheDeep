@@ -36,7 +36,7 @@ public class Robot {
 
     /* local OpMode members.*/
     HardwareMap hwMap = null; //hardware map
-    private final ElapsedTime period = new ElapsedTime();
+    protected ElapsedTime period = new ElapsedTime();
     public ElapsedTime getPeriod() {
         return period;
     }
@@ -48,7 +48,6 @@ public class Robot {
     public void init(HardwareMap ahwMap) {
 // Save reference to hardware map
         hwMap = ahwMap;
-
 
         leftFront = hwMap.get(DcMotor.class, "leftFront");
         rightFront = hwMap.get(DcMotor.class, "rightFront");
