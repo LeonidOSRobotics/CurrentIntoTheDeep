@@ -6,6 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class AutoFar extends LinearOpMode {
     AutoBot bot = new AutoBot();
     @Override
+
+
+
     public void runOpMode() {
 
         bot.init(hardwareMap);
@@ -13,10 +16,10 @@ public class AutoFar extends LinearOpMode {
         waitForStart();
 
 
-        bot.moveToPosition(1, 0.6);
+        //bot.moveToPosition(1, 0.6);
 
 
-        /*
+
         sleep(5000);
         bot.drive(-1, 0, 0, 0);
         sleep(1800);
@@ -32,3 +35,4 @@ public class AutoFar extends LinearOpMode {
 
     }
 }
+
