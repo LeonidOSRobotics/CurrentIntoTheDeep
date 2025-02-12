@@ -146,7 +146,7 @@ public class Robot {
         double x = strafe;
         double rotate = rotateRight - rotateLeft;
         //Slows speed of wheels
-        double dampening = .75;
+        double dampening = .6;
 
         //Calculating the power for the wheels
         double frontLeftPower = (y + x + rotate) * dampening;
