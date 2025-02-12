@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 public class AutoBot extends Robot {
 
@@ -34,8 +35,17 @@ public class AutoBot extends Robot {
         rightFront.setPower(Math.abs(power));
         rightBack.setPower(Math.abs(power));
 
-        while (leftFront.isBusy() && leftBack.isBusy() && rightFront.isBusy() && rightBack.isBusy()) {
-            // Wait until the motors reach the target position
+        while (opModeIsActive() && period.seconds() < timeoutS &&
+                leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()) {
+
+            // Telemetry for debugging
+            telemetry.addData("Target Positions", "%7D :%7D",
+                    newLeftFrontTarget, newRightFrontTarget, newLeftBackTarget, newRightBackTarget);
+            telemetry.addData("Current Positions", "%7D :%7D ",
+                    leftFront.getCurrentPosition(), rightFront.getCurrentPosition(),
+                    leftBack.getCurrentPosition(), rightBack.getCurrentPosition());
+            telemetry.addData("Time Elapsed", "", period.seconds());
+            telemetry.update();
         }
 
         stopDriveTrain();
@@ -47,7 +57,5 @@ public class AutoBot extends Robot {
         double circumference = Math.PI * Wheeldiameter_cm; // Wheel circumference in cm
         return (int) ((Ticksperrev / circumference) * cm); // Ticks per cm
     }
-
-
 
 }
