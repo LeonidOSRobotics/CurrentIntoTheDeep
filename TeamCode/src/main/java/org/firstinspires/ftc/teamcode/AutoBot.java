@@ -9,13 +9,14 @@ public class AutoBot extends Robot {
     public AutoBot() {
     }
 
+    //                          in cm
     public void moveToPosition(int targetPosition, double power, double timeoutS) {
         // Reset encoders after position movement
 
-        int newLeftFrontTarget = leftFront.getCurrentPosition()+targetPosition;
-        int newRightFrontTarget = rightFront.getCurrentPosition()+targetPosition;
-        int newLeftBackTarget = leftBack.getCurrentPosition()+targetPosition;
-        int newRightBackTarget = rightBack.getCurrentPosition()+targetPosition;
+        int newLeftFrontTarget = leftFront.getCurrentPosition()+getTicksPerCm(targetPosition);
+        int newRightFrontTarget = rightFront.getCurrentPosition()+getTicksPerCm(targetPosition);
+        int newLeftBackTarget = leftBack.getCurrentPosition()+getTicksPerCm(targetPosition);
+        int newRightBackTarget = rightBack.getCurrentPosition()+getTicksPerCm(targetPosition);
 
 
         leftFront.setTargetPosition(newLeftFrontTarget);
@@ -35,21 +36,24 @@ public class AutoBot extends Robot {
         rightFront.setPower(Math.abs(power));
         rightBack.setPower(Math.abs(power));
 
-        while (opModeIsActive() && period.seconds() < timeoutS &&
+        while (period.seconds() < timeoutS &&
                 leftFront.isBusy() && rightFront.isBusy() && leftBack.isBusy() && rightBack.isBusy()) {
 
             // Telemetry for debugging
-            telemetry.addData("Target Positions", "%7D :%7D",
+            /*telemetry.addData("Target Positions", "%7D :%7D",
                     newLeftFrontTarget, newRightFrontTarget, newLeftBackTarget, newRightBackTarget);
             telemetry.addData("Current Positions", "%7D :%7D ",
                     leftFront.getCurrentPosition(), rightFront.getCurrentPosition(),
                     leftBack.getCurrentPosition(), rightBack.getCurrentPosition());
             telemetry.addData("Time Elapsed", "", period.seconds());
-            telemetry.update();
+            telemetry.update();*/
         }
 
         stopDriveTrain();
-
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
 
