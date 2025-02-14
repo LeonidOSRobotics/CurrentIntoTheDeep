@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -8,6 +9,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 //This code is to mount the Friction based grabber onto the pusher circle.
 //The numbers and comment might have to be adjusted after testing
+@Disabled
 @TeleOp(name="Install/Remove Friction Grabber" , group="Linear OpMode")
 public class ServoTeleOp extends LinearOpMode {
 

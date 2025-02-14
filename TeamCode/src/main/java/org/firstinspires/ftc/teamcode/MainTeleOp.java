@@ -203,10 +203,10 @@ public class MainTeleOp extends LinearOpMode {
 
             if (gamepad1.dpad_left) {
                 robot.forward_s.setPower(0.8);
-                robot.backward_s.setPower(0);
+                robot.backward_s.setPower(-0.8);
             } else if (gamepad1.dpad_right) {
                 robot.backward_s.setPower(-0.8);
-                robot.forward_s.setPower(0);
+                robot.forward_s.setPower(0.8);
             } else {
                 robot.forward_s.setPower(0);
                 robot.backward_s.setPower(0);
