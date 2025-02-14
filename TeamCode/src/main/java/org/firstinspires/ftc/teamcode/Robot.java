@@ -141,12 +141,17 @@ public class Robot {
 
     }
 
-    public void drive(double forward, double strafe, double rotateLeft, double rotateRight) {
+    public void drive(double forward, double strafe, double rotateLeft, double rotateRight, boolean stickPressed) {
         double y = forward;
         double x = strafe;
         double rotate = rotateRight - rotateLeft;
         //Slows speed of wheels
-        double dampening = .6;
+        double dampening;
+        if(stickPressed) {
+            dampening = .8;
+        }else{
+            dampening = .6;
+        }
 
         //Calculating the power for the wheels
         double frontLeftPower = (y + x + rotate) * dampening;
