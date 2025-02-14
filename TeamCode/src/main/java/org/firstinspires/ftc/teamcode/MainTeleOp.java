@@ -201,6 +201,17 @@ public class MainTeleOp extends LinearOpMode {
                 robot.proportionalControlMotor(robot.intakeArm, robotState.getArmPosition(), 0.004);
             }
 
+            if (gamepad1.dpad_left) {
+                robot.forward_s.setPower(0.8);
+                robot.backward_s.setPower(0);
+            } else if (gamepad1.dpad_right) {
+                robot.backward_s.setPower(-0.8);
+                robot.forward_s.setPower(0);
+            } else {
+                robot.forward_s.setPower(0);
+                robot.backward_s.setPower(0);
+            }
+
 
 
            /* if (gamepad1.b) {
