@@ -105,6 +105,20 @@ public class AutoBot extends Robot {
         rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
+    public void moveArmToPosition(int targetPosition, double power, double timeoutS) {
+        intakeArm.setTargetPosition(targetPosition);
+        intakeArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        intakeArm.setPower(Math.abs(power));
+
+        super.period.reset();
+        while (period.seconds() < timeoutS && intakeArm.isBusy()) {
+
+        }
+
+        intakeArm.setPower(0);
+        intakeArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+    }
     public int getTicksPerCm(double cm) {
         double circumference = Math.PI * Wheeldiameter_cm; // Wheel circumference in cm
         return (int) ((Ticksperrev / circumference) * cm); // Ticks per cm

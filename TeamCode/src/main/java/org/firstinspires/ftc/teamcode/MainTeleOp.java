@@ -196,7 +196,7 @@ public class MainTeleOp extends LinearOpMode {
                 }
             } else {
 
-                robot.proportionalControlMotor(robot.linearSlide, robotState.getSlidePosition(), 0.01);
+                robot.proportionalControlMotor(robot.linearSlide, robotState.getSlidePosition(), 0.008);
                 robot.smplScoringBucket.setPosition(robotState.getBucketPosition());
                 robot.proportionalControlMotor(robot.intakeArm, robotState.getArmPosition(), 0.004);
             }
