@@ -20,8 +20,8 @@ public class Robot {
     DcMotor intakeArm = null;
 
 
-    Servo forward_s = null;
-    Servo backward_s = null;
+    CRServo forward_s = null;
+    CRServo backward_s = null;
 
     Servo smplScoringBucket = null;
     Servo frictionBasedGrabber = null;
@@ -57,8 +57,8 @@ public class Robot {
         linearSlide = hwMap.get(DcMotor.class, "slide");
         intakeArm = hwMap.get(DcMotor.class, "intakeArm");
 
-        forward_s = hwMap.get(Servo.class, "forward_s");
-        backward_s = hwMap.get(Servo.class, "backward_s");
+        forward_s = hwMap.get(CRServo.class, "forward_s");
+        backward_s = hwMap.get(CRServo.class, "backward_s");
 
         smplScoringBucket = hwMap.get(Servo.class, "bucket");
         frictionBasedGrabber = hwMap.get(Servo.class, "intake");
@@ -89,8 +89,8 @@ public class Robot {
         linearSlide.setDirection(DcMotor.Direction.REVERSE);
         intakeArm.setDirection(DcMotor.Direction.REVERSE);
 
-        forward_s.setDirection(Servo.Direction.FORWARD);
-        backward_s.setDirection(Servo.Direction.FORWARD);
+        forward_s.setDirection(CRServo.Direction.FORWARD);
+        backward_s.setDirection(CRServo.Direction.FORWARD);
 
         smplScoringBucket.setDirection(Servo.Direction.FORWARD);
         frictionBasedGrabber.setDirection(Servo.Direction.FORWARD);
