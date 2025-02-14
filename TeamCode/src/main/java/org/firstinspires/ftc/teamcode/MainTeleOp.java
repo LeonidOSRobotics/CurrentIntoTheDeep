@@ -17,8 +17,8 @@ public class MainTeleOp extends LinearOpMode {
     float turnLeft = 0;  // Stores the left-turn input from the gamepad triggers
 
     double grabberStartPosition = 0.3;
-    double grabberTargetPosition = grabberStartPosition + (20.0/180.0);
-    double grabberFullRotation = grabberStartPosition + (180.0/180.0);
+    double grabberTargetPosition = grabberStartPosition + (30.0/180.0);
+    double grabberFullRotation = grabberStartPosition + (170.0/180.0);
 
     private boolean manualControl = false;
     boolean buttonReleased = true;
@@ -72,7 +72,7 @@ public class MainTeleOp extends LinearOpMode {
             //State Machine
             if (buttonReleased) {
                 if (robotState == RobotState.BASE && gamepad2.dpad_up) {
-                    robotState = RobotState.SMPL_LOAD;
+                    robotState = RobotState.SMPL_SETUP;
                 } else if (robotState == RobotState.BASE && gamepad2.dpad_down) {
                     robotState = RobotState.PRE_PICKUP_SMPL;
                 } else if (robotState == RobotState.BASE && gamepad2.y) {
@@ -125,11 +125,11 @@ public class MainTeleOp extends LinearOpMode {
                         robotState = RobotState.BASE;
                     }
 
-                } else if (robotState == RobotState.SMPL_LOAD) {
+                } else if (robotState == RobotState.PICKUP_SMPL) {
                     if (gamepad2.right_bumper) {
-                        robotState = RobotState.SMPL_SETUP;
+                        robotState = RobotState.SMPL_LOAD;
                     } else if (gamepad2.left_bumper) {
-                        robotState = RobotState.BASE;
+                        robotState = RobotState.PRE_PICKUP_SMPL;
                     }
 
                 } else if (robotState == RobotState.SMPL_SETUP) {
