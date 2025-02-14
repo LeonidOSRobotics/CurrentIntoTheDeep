@@ -20,7 +20,7 @@ public class ServoTeleOp extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-
+/*
             if (gamepad1.x) { //Pre-Mount
                 robot.backward_s.setPosition(Servo.MAX_POSITION);
                 robot.forward_s.setPosition(Servo.MAX_POSITION);
@@ -33,6 +33,7 @@ public class ServoTeleOp extends LinearOpMode {
                 robot.backward_s.setPosition(Servo.MIN_POSITION);
                 robot.forward_s.setPosition(Servo.MIN_POSITION);
             }
+            */
         }
     }
 }
