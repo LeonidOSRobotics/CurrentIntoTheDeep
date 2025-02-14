@@ -17,7 +17,7 @@ public class MainTeleOp extends LinearOpMode {
     float turnLeft = 0;  // Stores the left-turn input from the gamepad triggers
 
     double grabberStartPosition = 0.3;
-    double grabberTargetPosition = grabberStartPosition + (20.0/180.0);
+    double grabberTargetPosition = grabberStartPosition + (30.0/180.0);
     double grabberFullRotation = grabberStartPosition + (170.0/180.0);
 
     private boolean manualControl = false;
