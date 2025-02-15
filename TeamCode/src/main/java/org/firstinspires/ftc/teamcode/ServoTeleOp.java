@@ -18,6 +18,7 @@ public class ServoTeleOp extends LinearOpMode {
 
     @Override
     public void runOpMode() {
+        /*
         robot.init(hardwareMap);
         waitForStart();
 
@@ -36,5 +37,9 @@ public class ServoTeleOp extends LinearOpMode {
                 robot.forward_s.setPosition(Servo.MIN_POSITION);
             }
         }
+    }
+
+
+ */
     }
 }
