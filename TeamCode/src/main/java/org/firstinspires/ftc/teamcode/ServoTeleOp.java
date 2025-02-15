@@ -37,10 +37,6 @@ public class ServoTeleOp extends LinearOpMode {
                 robot.forward_s.setPosition(Servo.MIN_POSITION);
             }
             */
-        }
-    }
 
-
- */
     }
 }
