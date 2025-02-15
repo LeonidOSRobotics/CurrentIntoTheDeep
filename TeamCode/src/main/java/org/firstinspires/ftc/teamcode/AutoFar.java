@@ -21,15 +21,15 @@ public class AutoFar extends LinearOpMode {
 
 
         sleep(5000);
-        bot.drive(-1, 0, 0, 0);
+        bot.drive(-1, 0, 0, 0, false);
         sleep(1800);
         bot.stopDriveTrain();
         sleep(150);
-        bot.drive(0, -1, 0, 0);
+        bot.drive(0, -1, 0, 0, false);
         sleep(200);
         bot.stopDriveTrain();
         sleep(150);
-        bot.drive(1, 0, 0, 0);
+        bot.drive(1, 0, 0, 0, false);
         sleep(2500);
         bot.stopDriveTrain();
 

@@ -54,7 +54,7 @@ public class Drive extends LinearOpMode {
 
             // Pass the adjusted movement values and turn inputs to the robot's drivetrain
             // The drive method in the Robot class handles motor power distribution for movement
-            robot.drive(rotForward, rotStrafe, turnRight, turnLeft);
+            robot.drive(rotForward, rotStrafe, turnRight, turnLeft, false);
 
             telemetry.addData("Robot's Angle:", botHeading);
             telemetry.update();

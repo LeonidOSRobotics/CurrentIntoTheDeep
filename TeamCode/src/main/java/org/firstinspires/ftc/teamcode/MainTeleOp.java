@@ -18,7 +18,7 @@ public class MainTeleOp extends LinearOpMode {
 
     double grabberStartPosition = 0.3;
     double grabberTargetPosition = grabberStartPosition + (40.0/180.0);
-    double grabberFullRotation = grabberStartPosition + (170.0/180.0);
+    double grabberFullRotation = grabberStartPosition + (110.0/180.0);
 
     private boolean manualControl = false;
     boolean buttonReleased = true;
@@ -66,7 +66,8 @@ public class MainTeleOp extends LinearOpMode {
 
             // Pass the adjusted movement values and turn inputs to the robot's drivetrain
             // The drive method in the Robot class handles motor power distribution for movement
-            robot.drive(rotForward, rotStrafe, turnRight, turnLeft);
+
+            robot.drive(rotForward, rotStrafe, turnRight, turnLeft,gamepad1.left_stick_button);
 
             //Currently missing SPMN grab and collect
             //State Machine
@@ -187,9 +188,9 @@ public class MainTeleOp extends LinearOpMode {
                     robot.linearSlide.setPower(0);
                 }
 
-                if (gamepad1.b) {
+                if (gamepad1.dpad_left) {
                     robot.intakeArm.setPower(.4);
-                } else if (gamepad1.a) {
+                } else if (gamepad1.dpad_right) {
                     robot.intakeArm.setPower(-0.4);
                 } else {
                     robot.intakeArm.setPower(0);
@@ -201,12 +202,12 @@ public class MainTeleOp extends LinearOpMode {
                 robot.proportionalControlMotor(robot.intakeArm, robotState.getArmPosition(), 0.004);
             }
 
-            if (gamepad1.dpad_left) {
+            if (gamepad1.a) {
                 robot.forward_s.setPower(0.8);
                 robot.backward_s.setPower(-0.8);
-            } else if (gamepad1.dpad_right) {
-                robot.backward_s.setPower(-0.8);
-                robot.forward_s.setPower(0.8);
+            } else if (gamepad1.b) {
+                robot.forward_s.setPower(-0.8);
+                robot.backward_s.setPower(0.8);
             } else {
                 robot.forward_s.setPower(0);
                 robot.backward_s.setPower(0);

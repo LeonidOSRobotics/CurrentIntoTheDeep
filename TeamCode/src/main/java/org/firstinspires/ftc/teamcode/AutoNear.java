@@ -13,13 +13,13 @@ public class AutoNear extends LinearOpMode {
 
         waitForStart();
 
-        bot.drive(-1, 0, 0, 0);
+        bot.drive(-1, 0, 0, 0, false);
         sleep(1000);
-        bot.drive(0, -1, 0, 0);
+        bot.drive(0, -1, 0, 0, false);
         sleep(500);
-        bot.drive(1, 0, 0, 0);
+        bot.drive(1, 0, 0, 0, false);
         sleep(2000);
-        bot.drive(0, 1, 0, 0);
+        bot.drive(0, 1, 0, 0, false);
         sleep(700);
         bot.stopDriveTrain();
 

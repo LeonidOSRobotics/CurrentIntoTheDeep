@@ -117,6 +117,7 @@ public class Robot {
         intakeArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         frictionBasedGrabber.setPosition(.8);
+        smplScoringBucket.setPosition(0.6);
 
         // set all motors to zero power
         stopDriveTrain();
@@ -141,12 +142,17 @@ public class Robot {
 
     }
 
-    public void drive(double forward, double strafe, double rotateLeft, double rotateRight) {
+    public void drive(double forward, double strafe, double rotateLeft, double rotateRight, boolean stickPressed) {
         double y = forward;
         double x = strafe;
         double rotate = rotateRight - rotateLeft;
         //Slows speed of wheels
-        double dampening = .6;
+        double dampening;
+        if(stickPressed) {
+            dampening = .8;
+        }else{
+            dampening = .6;
+        }
 
         //Calculating the power for the wheels
         double frontLeftPower = (y + x + rotate) * dampening;
