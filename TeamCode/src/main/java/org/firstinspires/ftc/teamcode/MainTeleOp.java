@@ -155,9 +155,9 @@ public class MainTeleOp extends LinearOpMode {
             }
 
 
-            if (gamepad1.x) {
+            if (gamepad2.dpad_right) {
                 robot.frictionBasedGrabber.setPosition(grabberTargetPosition);
-            } else if(gamepad1.y){
+            } else if(gamepad2.dpad_left){
                 robot.frictionBasedGrabber.setPosition(grabberFullRotation);
             }
 
@@ -202,10 +202,10 @@ public class MainTeleOp extends LinearOpMode {
                 robot.proportionalControlMotor(robot.intakeArm, robotState.getArmPosition(), 0.004);
             }
 
-            if (gamepad1.a) {
+            if (gamepad2.left_trigger>0) {
                 robot.forward_s.setPower(0.8);
                 robot.backward_s.setPower(-0.8);
-            } else if (gamepad1.b) {
+            } else if (gamepad2.right_trigger>0) {
                 robot.forward_s.setPower(-0.8);
                 robot.backward_s.setPower(0.8);
             } else {
