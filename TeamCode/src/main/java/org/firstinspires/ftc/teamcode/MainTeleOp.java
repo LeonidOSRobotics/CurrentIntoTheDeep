@@ -18,7 +18,7 @@ public class MainTeleOp extends LinearOpMode {
 
     double grabberStartPosition = 0.3;
     double grabberTargetPosition = grabberStartPosition + (40.0/180.0);
-    double grabberFullRotation = grabberStartPosition + (110.0/180.0);
+    double grabberFullRotation = grabberStartPosition + (100.0/180.0);
 
     private boolean manualControl = false;
     boolean buttonReleased = true;

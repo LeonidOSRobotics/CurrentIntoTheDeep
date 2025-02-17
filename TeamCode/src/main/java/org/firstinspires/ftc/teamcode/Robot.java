@@ -117,7 +117,7 @@ public class Robot {
         intakeArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         frictionBasedGrabber.setPosition(.8);
-        smplScoringBucket.setPosition(0.6);
+        smplScoringBucket.setPosition(0.65);
 
         // set all motors to zero power
         stopDriveTrain();
