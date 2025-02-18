@@ -127,26 +127,27 @@ public class Robot {
         imu.resetYaw();
     }
 
+     private double integral = 0;
+     private double lastError = 0;
+
+
     public void proportionalControlMotor(DcMotor motor, int targetPosition, double kP, double kI, double kD) {
         double error =targetPosition-motor.getCurrentPosition();
-        double integral = 0;
-        double lastError = 0;
-        double derivative;
 
-        derivative = error - lastError;
+        integral = integral + (error * period.seconds());;
+
+        double derivative = (error - lastError)/ period.seconds();
 
         // Calculate the proportional output
         double output = (kP * error) + (kI * integral) + (kD * derivative);
 
-
-
-
-
-        // Set motor power with proportional control
-        if (motor.getCurrentPosition() < targetPosition+5 && motor.getCurrentPosition() > targetPosition-5)
-        { motor.setPower(0);
-        }else{
+        if (Math.abs(error)<5) {
+            motor.setPower(0);
+        } else {
             motor.setPower(output);
+
+
+            lastError = error;
         }
 
     }
@@ -188,7 +189,12 @@ public class Robot {
     public int getLinearSlideTicksPerCm(double cm) {
         return (int) ((Ticksperrev / PULLEY_CIRCUMFERENCE_CM) * NUMBER_OF_WHEELS* cm); // New formula considering multiple wheels
     }
+    public double getAngleTicksPerCm(int ticks) {
 
+        double angle = (ticks/Ticksperrev) * 360;
+        return angle;
+
+     }
 
 
 
