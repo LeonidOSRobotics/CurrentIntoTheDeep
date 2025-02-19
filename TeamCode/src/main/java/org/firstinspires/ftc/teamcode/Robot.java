@@ -87,7 +87,7 @@ public class Robot {
         rightBack.setDirection(DcMotor.Direction.REVERSE);
 
         linearSlide.setDirection(DcMotor.Direction.REVERSE);
-        intakeArm.setDirection(DcMotor.Direction.REVERSE);
+        intakeArm.setDirection(DcMotor.Direction.FORWARD);
 
         forward_s.setDirection(CRServo.Direction.FORWARD);
         backward_s.setDirection(CRServo.Direction.FORWARD);
@@ -131,24 +131,28 @@ public class Robot {
      private double lastError = 0;
 
 
-    public void proportionalControlMotor(DcMotor motor, int targetPosition, double kP, double kI, double kD) {
-        double error =targetPosition-motor.getCurrentPosition();
+    public double proportionalControlMotor(DcMotor motor, int targetPosition, double kP, double kI, double kD) {
 
-        integral = integral + (error * period.seconds());;
+        //double error = motor.getCurrentPosition()-targetPosition;
+        double error = targetPosition+motor.getCurrentPosition();
+
+        integral = integral + (error * period.seconds());
 
         double derivative = (error - lastError)/ period.seconds();
 
         // Calculate the proportional output
         double output = (kP * error) + (kI * integral) + (kD * derivative);
 
-        if (Math.abs(error)<5) {
+        if (Math.abs(error)<0) {
             motor.setPower(0);
         } else {
-            motor.setPower(output);
+            motor.setPower(-error);
 
 
             lastError = error;
         }
+
+        return error;
 
     }
 
@@ -189,10 +193,10 @@ public class Robot {
     public int getLinearSlideTicksPerCm(double cm) {
         return (int) ((Ticksperrev / PULLEY_CIRCUMFERENCE_CM) * NUMBER_OF_WHEELS* cm); // New formula considering multiple wheels
     }
-    public double getAngleTicksPerCm(int ticks) {
+    public int getAngleTicksPerCm(int degrees) {
 
-        double angle = (ticks/Ticksperrev) * 360;
-        return angle;
+        double angle = ((Ticksperrev/360)*28) * degrees;
+        return (int) angle;
 
      }
 
