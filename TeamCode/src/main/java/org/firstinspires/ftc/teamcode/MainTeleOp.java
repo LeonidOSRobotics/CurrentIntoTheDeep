@@ -197,9 +197,9 @@ public class MainTeleOp extends LinearOpMode {
                 }
             } else {
 
-                robot.proportionalControlMotor(robot.linearSlide, robotState.getSlidePosition(), 0.008,0,0);
+                robot.proportionalControlMotor(robot.linearSlide, robotState.getSlidePosition(), 0.001,0.1,0.008);
                 robot.smplScoringBucket.setPosition(robotState.getBucketPosition());
-                robot.proportionalControlMotor(robot.intakeArm, robotState.getArmPosition(), 0.004,0,0);
+                robot.proportionalControlMotor(robot.intakeArm, robotState.getArmPosition(), 0.001,0.1,0.008);
             }
 
             if (gamepad2.left_trigger>0) {

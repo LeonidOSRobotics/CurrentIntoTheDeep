@@ -152,7 +152,7 @@ public class Robot {
             lastError = error;
         }
 
-        return error;
+        return motor.getCurrentPosition();
 
     }
 
