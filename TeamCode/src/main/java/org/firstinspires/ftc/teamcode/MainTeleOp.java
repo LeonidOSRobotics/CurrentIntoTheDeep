@@ -57,7 +57,7 @@ public class MainTeleOp extends LinearOpMode {
 
             // Retrieve the robot's current heading (yaw) from the IMU sensor in radians
             // Subtracting Math.PI aligns the robot's coordinate system with the desired orientation
-            double botHeading = robot.imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS) - Math.PI;
+            double botHeading = 0; //robot.imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS) - Math.PI;
 
             // Adjust the movement direction to account for the robot's current rotation:
             // The forward and strafe components are rotated by the negative of the robot's heading
